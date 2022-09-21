@@ -3,7 +3,7 @@ import { BiArchive } from 'react-icons/bi';
 function App() {
   return (
     <div className="App">
-      <h1>
+      <h1 className="text-3xl font-bold underline">
         <BiArchive />
         I'm listening.
       </h1>
