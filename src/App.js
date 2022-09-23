@@ -1,6 +1,7 @@
 import { BiArchive } from 'react-icons/bi';
 import Search from './Components/Search';
 
+
 function App() {
   return (
     <div className="App container mx-auto mt-3 font-thin">
