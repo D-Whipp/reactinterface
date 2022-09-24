@@ -1,10 +1,24 @@
+import { useState, useEffect, useCallback } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 import Search from './Components/Search';
 import AddAppointment from './Components/AddAppointment';
-import appointmentList from './data.json';
 import AppointmentInfo from './Components/AppointmentInfo';
 
 function App() {
+  let [appointmentList, setAppointmentList] = useState([]);
+
+  const fetchData = useCallback(() => {
+    fetchData('./data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setAppointmentList(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
     <div className="App container mx-auto mt-3 font-thin">
       <h1 className="text-5xl mb-5">
@@ -16,7 +30,10 @@ function App() {
 
       <ul className="divide-y divide-gray-200">
         {appointmentList.map((appointment) => (
-          <AppointmentInfo key={appointment.id} appointment={appointment} />
+          <AppointmentInfo
+            key={appointment.id}
+            appointment={appointment}
+          />
         ))}
       </ul>
     </div>
