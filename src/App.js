@@ -33,6 +33,13 @@ function App() {
           <AppointmentInfo
             key={appointment.id}
             appointment={appointment}
+            onDeleteAppointment={(appointmentId) =>
+              setAppointmentList(
+                appointmentList.filter(
+                  (appointment) => appointment.id !== appointmentId
+                )
+              )
+            }
           />
         ))}
       </ul>
